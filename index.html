@@ -18,6 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <title>Frontend Mentor | Todo app</title>
 
@@ -54,15 +55,14 @@
             />
           </div>
           <div class="taskpane">
-            <input type="text" class="task-text" placeholder="Create a TODO" />
+            <input
+              type="text"
+              class="task-text"
+              placeholder="Create a TODO"
+              id="press"
+            />
           </div>
-          <div class="todo-box">
-            <div class="image-circle">
-              <img src="./images/icon-check.svg" alt="" />
-            </div>
-            <p>my first TODO</p>
-            <a href=""> <span class="cross"></span> </a>
-          </div>
+          <div id="todo-set"></div>
           <div class="todo-content">
             <div class="todo-manage">
               <p>0 item left</p>
@@ -71,7 +71,7 @@
                 <li><a href="#">Active</a></li>
                 <li><a href="#">Complete</a></li>
               </ul>
-              <a href="#">Clear Complete</a>
+              <a href="#" onclick="clearAll()">Clear Complete</a>
             </div>
           </div>
         </div>
@@ -86,6 +86,27 @@
         >. Coded by <a href="#">Sahibpreet Singh</a>.
       </div>
     </footer>
+    <script src="/javascript/index.js"></script>
+    <script>
+     let enter = document.getElementById("press");
+enter.addEventListener("keypress", function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    let notes = localStorage.getItem("notes");
+    if (notes == null) {
+      notesObj = [];
+    } else {
+      notesObj = JSON.parse(notes);
+    }
+    notesObj.push(enter.value);
+    localStorage.setItem("notes", JSON.stringify(notesObj));
+    enter.value = "";
+    console.log(notesObj);
+    showNotes();
+  }
+});
+
+
+    </script>
   </body>
-  <script src="/javascript/index.js"></script>
 </html>

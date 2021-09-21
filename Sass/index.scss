@@ -1,9 +1,18 @@
 $background-color: hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 $font-size: 1.8rem;
 $todo-color: #c8cbe7;
+@if ($todo-color: #c8cbe7) {
+  $todo-color: grey;
+}
 @mixin dark {
   background: #171823;
   color: white;
+}
+
+@mixin animation($animation-name, $animation-duration, $animation-delay) {
+  animation-name: $animation-name;
+  animation-duration: $animation-duration;
+  animation-delay: $animation-delay;
 }
 body {
   @include dark;
@@ -13,7 +22,7 @@ body {
 
 .container {
   width: 100%;
-  min-height: 100%;
+  min-height: 50rem;
   .background-image {
     background: url(/images/bg-desktop-dark.jpg) no-repeat 0px 0px;
     background-size: contain !important;
@@ -53,7 +62,7 @@ body {
         right: 0%;
         top: 44px;
         & h1 {
-          font-size: 42px;
+          font-size: 40px;
         }
         & img {
           width: 30px;
@@ -117,13 +126,13 @@ body {
         margin-bottom: -61px;
         border-radius: 6px 6px 0px 0px;
         position: relative;
-        align-items: center;   
+        align-items: center;
         //    box-shadow: 4px 4px rgb(white / 25%);
         & .image-circle {
-          width: 24px;
+          width: 20px;
           border-radius: 50%;
-          // border: 1px solid;
-          height: 24px;
+          border: 1px solid grey;
+          height: 19px;
           position: relative;
           margin: auto;
           left: 17px;
@@ -133,14 +142,15 @@ body {
           align-content: center;
           background: linear-gradient(45deg, #de06bc, transparent);
           & img {
-            display: block;
+            // display: none;
             width: 12px;
             margin: auto;
           }
         }
 
         & p {
-          color: $todo-color;
+          @include animation(zoom, 1s, 0s);
+          color: rgb(200, 203, 231);
           width: 100%;
           padding-left: 35px;
         }
@@ -149,11 +159,12 @@ body {
           background: #c8cbe7;
           content: "";
           position: absolute;
-          width: 33px;
+          width: 21px;
           height: 2px;
         }
         .cross {
-            display: none;
+          @include animation(zoom, 1s, 0s);
+          // display: none;
           top: 25px;
           transform: rotate(45deg);
           left: 88%;
@@ -166,11 +177,63 @@ body {
     }
   }
 }
-
+.image-circle2 {
+  background: none !important;
+}
 footer {
   position: absolute;
-  bottom: 0;
+  // bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
+}
+@keyframes animate {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.7;
+  }
+}
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+@keyframes slide-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-2000px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(2000px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes zoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  100% {
+    opacity: 1;
+  }
 }

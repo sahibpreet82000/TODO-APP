@@ -7,7 +7,7 @@ body {
 
 .container {
   width: 100%;
-  min-height: 100%;
+  min-height: 50rem;
 }
 
 .container .background-image {
@@ -63,7 +63,7 @@ body {
 }
 
 .container .background-image .todo .heading h1 {
-  font-size: 42px;
+  font-size: 40px;
 }
 
 .container .background-image .todo .heading img {
@@ -102,7 +102,7 @@ body {
   margin: auto;
   font-size: 15px;
   font-weight: 300;
-  color: #c8cbe7;
+  color: grey;
 }
 
 .container .background-image .todo .todo-content .todo-manage ul {
@@ -124,13 +124,13 @@ body {
   text-decoration: none;
   font-size: 15px;
   font-weight: 300;
-  color: #c8cbe7;
+  color: grey;
 }
 
 .container .background-image .todo .todo-content .todo-manage a {
   color: inherit;
   text-decoration: none;
-  color: #c8cbe7;
+  color: grey;
   margin: auto 13px;
   font-size: 15px;
   font-weight: 300;
@@ -150,9 +150,10 @@ body {
 }
 
 .container .background-image .todo .todo-box .image-circle {
-  width: 24px;
+  width: 20px;
   border-radius: 50%;
-  height: 24px;
+  border: 1px solid grey;
+  height: 19px;
   position: relative;
   margin: auto;
   left: 17px;
@@ -169,12 +170,17 @@ body {
 }
 
 .container .background-image .todo .todo-box .image-circle img {
-  display: block;
   width: 12px;
   margin: auto;
 }
 
 .container .background-image .todo .todo-box p {
+  -webkit-animation-name: zoom;
+          animation-name: zoom;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
   color: #c8cbe7;
   width: 100%;
   padding-left: 35px;
@@ -185,12 +191,17 @@ body {
   background: #c8cbe7;
   content: "";
   position: absolute;
-  width: 33px;
+  width: 21px;
   height: 2px;
 }
 
 .container .background-image .todo .todo-box .cross {
-  display: none;
+  -webkit-animation-name: zoom;
+          animation-name: zoom;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
   top: 25px;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
@@ -202,11 +213,134 @@ body {
           transform: rotate(-90deg);
 }
 
+.image-circle2 {
+  background: none !important;
+}
+
 footer {
   position: absolute;
-  bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
+}
+
+@-webkit-keyframes animate {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+@-webkit-keyframes slide {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(2000px);
+            transform: translateX(2000px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(2000px);
+            transform: translateX(2000px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@-webkit-keyframes slide-left {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-2000px);
+            transform: translateX(-2000px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-2000px);
+            transform: translateX(-2000px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@-webkit-keyframes slide-up {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(2000px);
+            transform: translateY(2000px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(2000px);
+            transform: translateY(2000px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+@-webkit-keyframes zoom {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.3);
+            transform: scale(0.3);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoom {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.3);
+            transform: scale(0.3);
+  }
+  100% {
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=index.css.map */
