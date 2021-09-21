@@ -106,6 +106,7 @@ body {
 }
 
 .container .background-image .todo .todo-content .todo-manage ul {
+  padding: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -10,7 +10,7 @@ function showNotes() {
   let html = "";
   notesObj.forEach(function (element, index) {
     html += `
-      <div class="todo-box" onmouseover="hover()"> 
+      <div class="todo-box"> 
       <div class="image-circle  id="${index}" onclick="tick(this.id)"">
         <img src="./images/icon-check.svg" alt="" />
       </div>
@@ -26,6 +26,8 @@ function showNotes() {
   else{
     noteElm.innerHTML = ``;
   }
+  let noteEl = document.querySelector(".todo-manage p");
+    noteEl.innerHTML = notesObj.length + " item(s) left";
 }
 // forEach(function hover(){
 //   document.querySelector(".todo-box").addEventListener("mouseover", function () {
@@ -121,19 +123,10 @@ const toggle = document.querySelector(".image-circle");
 
 toggle.addEventListener("click", () => {
   toggle.classList.toggle("image-circle2");
-  console.log("toggled");
 });
 
-// main js
-
-// function enter(key){
-
-//   else{
-//     return false;
-//   }
-// }
 function clearAll(){
   localStorage.clear();
-  location.reload();
+  location.reload(); 
 }
      
