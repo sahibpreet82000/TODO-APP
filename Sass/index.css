@@ -7,7 +7,7 @@ body {
 
 .container {
   width: 100%;
-  min-height: 50rem;
+  min-height: 43rem;
 }
 
 .container .background-image {
@@ -47,7 +47,7 @@ body {
   border: none;
   outline: none;
   font-size: 17px;
-  color: white;
+  color: #c8cbe7;
 }
 
 .container .background-image .todo .heading {
@@ -187,7 +187,7 @@ body {
   padding-left: 35px;
 }
 
-.container .background-image .todo .todo-box a .cross,
+.container .background-image .todo .todo-box .cross,
 .container .background-image .todo .todo-box .cross::after {
   background: #c8cbe7;
   content: "";
@@ -203,6 +203,7 @@ body {
           animation-duration: 1s;
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
+  display: none;
   top: 25px;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
@@ -218,11 +219,34 @@ body {
   background: none !important;
 }
 
+.line-through {
+  text-decoration: line-through;
+}
+
 footer {
   position: absolute;
   left: 0;
   right: 0;
   width: 100%;
+}
+
+@media (max-width: 1020px) {
+  .container .background-image {
+    background: url(/images/bg-mobile-dark.jpg) no-repeat 0px 0px;
+    background-size: cover !important;
+  }
+}
+
+@media (max-width: 610px) {
+  .container .background-image {
+    padding: 12px;
+  }
+  .container .background-image .todo .heading img {
+    left: 50%;
+  }
+  .todo-manage a {
+    margin: auto !important;
+  }
 }
 
 @-webkit-keyframes animate {

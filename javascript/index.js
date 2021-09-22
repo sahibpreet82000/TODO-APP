@@ -1,5 +1,7 @@
 showNotes();
 
+//--------------------------------------------------for adding a note--------------------------------------------------
+
 function showNotes() {
   let notes = localStorage.getItem("notes");
   if (notes == null) {
@@ -11,62 +13,41 @@ function showNotes() {
   notesObj.forEach(function (element, index) {
     html += `
       <div class="todo-box"> 
-      <div class="image-circle  id="${index}" onclick="tick(this.id)"">
+      <div class="image-circle  id="${index}">
         <img src="./images/icon-check.svg" alt="" />
       </div>
       <p>${element}</p>
-      <a href="#"> <span  id="${index}" onclick="deleting(this.id)" class="cross"></span> </a>
+       <span  id="${index}" onclick="deleting(this.id)" class="cross"></span> 
     </div>
       `;
   });
   let noteElm = document.getElementById("todo-set");
   if (notesObj.length != 0) {
     noteElm.innerHTML = html;
-  }
-  else{
+  } else {
     noteElm.innerHTML = ``;
   }
   let noteEl = document.querySelector(".todo-manage p");
-    noteEl.innerHTML = notesObj.length + " item(s) left";
+  noteEl.innerHTML = notesObj.length + " item(s) left";
+  hover();
 }
-// forEach(function hover(){
-//   document.querySelector(".todo-box").addEventListener("mouseover", function () {
-//     let hover = document.querySelector(".cross");
-  
-//     hover.style.display = "block";
-//   });
-  
-//   document.querySelector(".todo-box").addEventListener("mouseout", function () {
-//     let hover = document.querySelector(".cross");
-  
-//     hover.style.display = "none";
-//   }); 
-// });
 
-function deleting(index) { 
+//--------------------------------------------------for deletion a note--------------------------------------------------
+
+function deleting(index) {
   let notes = localStorage.getItem("notes");
   if (notes == null) {
     notesObj = [];
-  
-  }
-   else {
+  } else {
     notesObj = JSON.parse(notes);
   }
- notesObj.splice(index,1);
-  localStorage.setItem('notes',JSON.stringify(notesObj));
+  notesObj.splice(index, 1);
+  localStorage.setItem("notes", JSON.stringify(notesObj));
   showNotes();
 }
-// function tick(index){
-//   let notes = localStorage.getItem("notes");
-//   if (notes == null) {
-//     notesObj = [];
-//   } else {
-//     notesObj = JSON.parse(notes);
-//   }
 
-//   localStorage.setItem('notes',JSON.stringify(notesObj));
+// --------------------------------------------------for background and text change (switching light to dark)--------------------------------------------------
 
-// }
 function change() {
   let set = document.querySelector(".img-light");
   let background = document.querySelector(".background-image");
@@ -83,50 +64,76 @@ function change() {
       "url('/images/bg-desktop-light.jpg') no-repeat";
     body.style.background = "white";
     box.style.background = "white";
-    box2.style.background = "white";
     box3.style.background = "white";
     text.style.color = "black";
-    text2.style.color = "grey";
   } else {
     set.style.zIndex = "2";
     background.style.background =
       "url('/images/bg-desktop-dark.jpg') no-repeat";
     body.style.background = "#171823";
     box.style.background = "#25273d";
-    box2.style.background = "#25273d";
     box3.style.background = "#25273d";
-    text.style.color = "white";
-    text2.style.color = "#c8cbe7";
+    text.style.color = "rgb(200, 203, 231)";
   }
   let dark = document.querySelector(".img-dark");
   if (dark.style.zIndex != 2) {
     dark.style.zIndex = "2";
+    box2.style.background = "white";
+    text2.style.color = "grey";
     tickBg.style.background =
       "linear-gradient(to right, rgb(129 0 248), #f89999)";
   } else {
     dark.style.zIndex = "-2";
+    box2.style.background = "#25273d";
+    text2.style.color = "#c8cbe7";
     tickBg.style.background = "linear-gradient(45deg, #de06bc,#1f3e5b)";
   }
 }
+//--------------------------------------------------for tick selection--------------------------------------------------
 
-let backgorundImg = document
-  .querySelector(".image-circle")
-  .addEventListener("change", function () {
-    document.style.classList.toggle("image-circle2");
-  });
 $(document).ready(function () {
   $(".image-circle").click(function () {
     $(".image-circle img").toggle();
   });
 });
 const toggle = document.querySelector(".image-circle");
+const toggleP = document.querySelector(".todo-box p");
 
 toggle.addEventListener("click", () => {
   toggle.classList.toggle("image-circle2");
+  toggleP.classList.toggle("line-through");
 });
+//--------------------------------------------------for clear all --------------------------------------------------
 
-function clearAll(){
+function clearAll() {
   localStorage.clear();
-  location.reload(); 
+  location.reload();
 }
-     
+
+//--------------------------------------------------for corss hover--------------------------------------------------
+function hover() {
+  let notes = localStorage.getItem("notes");
+  if (notes == null) {
+    notesObj = [];
+  } else {
+    notesObj = JSON.parse(notes);
+  }
+  notesObj.forEach(function () {
+    document
+      .querySelector(".todo-box")
+      .addEventListener("mouseover", function () {
+        let hover = document.querySelector(".cross");
+
+        hover.style.display = "block";
+      });
+
+    document
+      .querySelector(".todo-box")
+      .addEventListener("mouseout", function () {
+        let hover = document.querySelector(".cross");
+
+        hover.style.display = "none";
+      });
+  });
+  localStorage.setItem("notes", JSON.stringify(notesObj));
+}

@@ -22,7 +22,7 @@ body {
 
 .container {
   width: 100%;
-  min-height: 50rem;
+  min-height: 43rem;
   .background-image {
     background: url(/images/bg-desktop-dark.jpg) no-repeat 0px 0px;
     background-size: contain !important;
@@ -52,7 +52,7 @@ body {
           border: none;
           outline: none;
           font-size: 17px;
-          color: white;
+          color: rgb(200, 203, 231);
         }
       }
       .heading {
@@ -155,7 +155,7 @@ body {
           width: 100%;
           padding-left: 35px;
         }
-        & a .cross,
+        & .cross,
         .cross::after {
           background: #c8cbe7;
           content: "";
@@ -163,9 +163,10 @@ body {
           width: 21px;
           height: 2px;
         }
+        
         .cross {
           @include animation(zoom, 1s, 0s);
-          // display: none;
+          display: none;
           top: 25px;
           transform: rotate(45deg);
           left: 88%;
@@ -181,12 +182,40 @@ body {
 .image-circle2 {
   background: none !important;
 }
+.line-through{
+  text-decoration: line-through;
+}
 footer {
   position: absolute;
   // bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
+}
+@media (max-width: 1020px) {
+  .container {
+    .background-image {
+      background: url(/images/bg-mobile-dark.jpg) no-repeat 0px 0px;
+      background-size: cover !important;
+    }
+  }
+}
+@media (max-width: 610px) {
+  .container {
+    .background-image {
+      padding: 12px;
+      .todo {
+        .heading {
+          & img {
+            left: 50%;
+          }
+        }
+      }
+    }
+  }
+  .todo-manage a {
+    margin: auto !important;
+  }
 }
 @keyframes animate {
   0% {

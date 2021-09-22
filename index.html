@@ -101,7 +101,6 @@ enter.addEventListener("keypress", function (event) {
     notesObj.push(enter.value);
     localStorage.setItem("notes", JSON.stringify(notesObj));
     enter.value = "";
-    console.log(notesObj);
     showNotes();
   }
 });
