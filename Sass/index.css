@@ -167,10 +167,10 @@ body {
           justify-content: center;
   -ms-flex-line-pack: center;
       align-content: center;
-  background: linear-gradient(45deg, #de06bc, transparent);
 }
 
 .container .background-image .todo .todo-box .image-circle img {
+  display: none;
   width: 12px;
   margin: auto;
 }
@@ -216,7 +216,7 @@ body {
 }
 
 .image-circle2 {
-  background: none !important;
+  background: linear-gradient(45deg, #de06bc, transparent);
 }
 
 .line-through {

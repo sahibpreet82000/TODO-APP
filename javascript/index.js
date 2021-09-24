@@ -9,7 +9,7 @@ function showNotes() {
   } else {
     notesObj = JSON.parse(notes);
   }
-  let html = "";
+  let html = [];
   notesObj.forEach(function (element, index) {
     html += `
       <div class="todo-box"> 
@@ -57,7 +57,7 @@ function change() {
   let box3 = document.querySelector(".todo-content");
   let text = document.querySelector(".task-text");
   let text2 = document.querySelector(".todo-box p");
-  let tickBg = document.querySelector(".image-circle");
+  let tickBg = document.querySelector(".image-circle2");
   if (set.style.zIndex != -2) {
     set.style.zIndex = "-2";
     background.style.background =
@@ -119,21 +119,22 @@ function hover() {
     notesObj = JSON.parse(notes);
   }
   notesObj.forEach(function () {
-    document
-      .querySelector(".todo-box")
-      .addEventListener("mouseover", function () {
-        let hover = document.querySelector(".cross");
-
-        hover.style.display = "block";
+    document.querySelectorAll(".todo-box").forEach((el) => {
+      el.addEventListener("mouseover", function (e) {
+        if (e.target.children[2]) {
+          e.target.children[2].style.display = "block";
+        }
       });
-
-    document
-      .querySelector(".todo-box")
-      .addEventListener("mouseout", function () {
-        let hover = document.querySelector(".cross");
-
-        hover.style.display = "none";
+    });
+    document.querySelectorAll(".todo-box").forEach((el) => {
+      el.addEventListener("mouseleave", function (e) {
+        if (e.target.children[2]) {
+          e.target.children[2].style.display = "none";
+        }
       });
+    });
   });
   localStorage.setItem("notes", JSON.stringify(notesObj));
 }
+
+//--------------------------------------------------for corss hover--------------------------------------------------

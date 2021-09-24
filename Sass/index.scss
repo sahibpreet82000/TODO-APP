@@ -141,9 +141,8 @@ body {
           display: flex;
           justify-content: center;
           align-content: center;
-          background: linear-gradient(45deg, #de06bc, transparent);
           & img {
-            // display: none;
+            display: none;
             width: 12px;
             margin: auto;
           }
@@ -180,7 +179,7 @@ body {
   }
 }
 .image-circle2 {
-  background: none !important;
+  background: linear-gradient(45deg, #de06bc, transparent);
 }
 .line-through{
   text-decoration: line-through;
