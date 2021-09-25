@@ -170,7 +170,6 @@ body {
 }
 
 .container .background-image .todo .todo-box .image-circle img {
-  display: none;
   width: 12px;
   margin: auto;
 }
@@ -220,6 +219,7 @@ body {
 }
 
 .line-through {
+  color: #4d5067 !important;
   text-decoration: line-through;
 }
 
@@ -246,6 +246,15 @@ footer {
   }
   .todo-manage a {
     margin: auto !important;
+  }
+  .attribution {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 393px) {
+  .container .background-image .todo .heading img {
+    left: 40%;
   }
 }
 
@@ -367,5 +376,13 @@ footer {
   100% {
     opacity: 1;
   }
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.hidden2 {
+  display: block;
 }
 /*# sourceMappingURL=index.css.map */

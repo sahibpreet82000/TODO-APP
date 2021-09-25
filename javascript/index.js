@@ -9,12 +9,12 @@ function showNotes() {
   } else {
     notesObj = JSON.parse(notes);
   }
-  let html = [];
+  let html = "";
   notesObj.forEach(function (element, index) {
     html += `
       <div class="todo-box"> 
-      <div class="image-circle  id="${index}">
-        <img src="./images/icon-check.svg" alt="" />
+      <div class="image-circle" onclick="taskDone()">
+        <img src="./images/icon-check.svg" alt="img" class="hidden"/>
       </div>
       <p>${element}</p>
        <span  id="${index}" onclick="deleting(this.id)" class="cross"></span> 
@@ -30,8 +30,9 @@ function showNotes() {
   let noteEl = document.querySelector(".todo-manage p");
   noteEl.innerHTML = notesObj.length + " item(s) left";
   hover();
+  complete();
+  // taskDone();
 }
-
 //--------------------------------------------------for deletion a note--------------------------------------------------
 
 function deleting(index) {
@@ -91,18 +92,53 @@ function change() {
 }
 //--------------------------------------------------for tick selection--------------------------------------------------
 
-$(document).ready(function () {
-  $(".image-circle").click(function () {
-    $(".image-circle img").toggle();
-  });
-});
-const toggle = document.querySelector(".image-circle");
-const toggleP = document.querySelector(".todo-box p");
+// const toggle = document.querySelector(".image-circle");
+// let toggleP = document.querySelector(".todo-box p");
 
-toggle.addEventListener("click", () => {
-  toggle.classList.toggle("image-circle2");
-  toggleP.classList.toggle("line-through");
-});
+// toggle.addEventListener("click", () => {
+//   toggle.classList.toggle("image-circle2");
+//   toggleP.classList.toggle("line-through");
+// });
+
+function taskDone() {
+  let notes = localStorage.getItem("notes");
+  if (notes == null) {
+    notesObj = [];
+  } else {
+    notesObj = JSON.parse(notes);
+  }
+  notesObj.forEach(function () {
+    document.querySelectorAll(".image-circle").forEach((el) => {
+      const img = el.children[0];
+      img.addEventListener("click", function (e) {
+        e.stopPropagation();
+        console.log(e.target.classList);
+        // img.classList.toggle("hidden");
+
+        // if (e.target.children) {
+        //   if (!img.classList.contains("hidden")) {
+        //     console.log("if");
+        //     console.log(img);
+
+        //     return img.classList.add("hidden");
+        //   }
+
+        //   console.log(img);
+        //   img.classList.remove("hidden");
+        // }
+        // e.target.children[0].classList.toggle("hidden");
+        // document.querySelectorAll(".image-circle img").forEach((e) => {
+        //      if (e.target) {
+        //        console.log(e);
+        //       e.target.style.display = "block";
+        //      }
+        //   });
+
+        // e.target.classList.toggle("image-circle2");
+      });
+    });
+  });
+}
 //--------------------------------------------------for clear all --------------------------------------------------
 
 function clearAll() {
@@ -137,4 +173,12 @@ function hover() {
   localStorage.setItem("notes", JSON.stringify(notesObj));
 }
 
-//--------------------------------------------------for corss hover--------------------------------------------------
+//--------------------------------------------------for completed task--------------------------------------------------
+function complete() {
+  let notes = localStorage.getItem("notes");
+  if (notes == null) {
+    notesObj = [];
+  } else {
+    notesObj = JSON.parse(notes);
+  }
+}

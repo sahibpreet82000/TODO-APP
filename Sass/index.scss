@@ -142,7 +142,6 @@ body {
           justify-content: center;
           align-content: center;
           & img {
-            display: none;
             width: 12px;
             margin: auto;
           }
@@ -162,7 +161,7 @@ body {
           width: 21px;
           height: 2px;
         }
-        
+
         .cross {
           @include animation(zoom, 1s, 0s);
           display: none;
@@ -181,7 +180,8 @@ body {
 .image-circle2 {
   background: linear-gradient(45deg, #de06bc, transparent);
 }
-.line-through{
+.line-through {
+  color: #4d5067 !important;
   text-decoration: line-through;
 }
 footer {
@@ -215,7 +215,24 @@ footer {
   .todo-manage a {
     margin: auto !important;
   }
+  .attribution {
+    font-size: 14px !important;
+  }
 }
+@media (max-width: 393px) {
+  .container {
+    .background-image {
+      .todo {
+        .heading {
+          & img {
+            left: 40%;
+          }
+        }
+      }
+    }
+  }
+}
+
 @keyframes animate {
   0% {
     opacity: 0.5;
@@ -265,4 +282,11 @@ footer {
   100% {
     opacity: 1;
   }
+}
+
+.hidden {
+  opacity: 0;
+}
+.hidden2 {
+  display: block;
 }
