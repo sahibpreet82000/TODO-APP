@@ -9,35 +9,27 @@ body {
   width: 100%;
   min-height: 43rem;
 }
-
 .container .background-image {
   background: url(/images/bg-desktop-dark.jpg) no-repeat 0px 0px;
   background-size: contain !important;
   min-height: 363px;
   margin: 0px;
 }
-
 .container .background-image .todo {
   width: 100%;
   max-width: 543px;
   margin: auto;
 }
-
-.container .background-image .todo .taskpane, .container .background-image .todo .todo-content, .container .background-image .todo .todo-box {
+.container .background-image .todo .taskpane, .container .background-image .todo .todo-box, .container .background-image .todo .todo-content {
   background-color: #25273d;
   opacity: 1;
   height: 51px;
   border-radius: 6px;
   margin: 62px 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
-
-.container .background-image .todo .taskpane .task-text, .container .background-image .todo .todo-content .task-text, .container .background-image .todo .todo-box .task-text {
+.container .background-image .todo .taskpane .task-text, .container .background-image .todo .todo-box .task-text, .container .background-image .todo .todo-content .task-text {
   padding-left: 40px;
   width: 93%;
   margin: auto;
@@ -49,85 +41,58 @@ body {
   font-size: 17px;
   color: #c8cbe7;
 }
-
 .container .background-image .todo .heading {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
+  align-items: baseline;
   right: 0%;
   top: 44px;
 }
-
 .container .background-image .todo .heading h1 {
   font-size: 40px;
 }
-
 .container .background-image .todo .heading img {
   width: 30px;
   height: 30px;
   position: relative;
   left: 60%;
 }
-
 .container .background-image .todo .heading img.img-light {
   margin: -33px;
 }
-
 .container .background-image .todo .heading img.img-dark {
   z-index: -2;
 }
-
 .container .background-image .todo .todo-content {
   border-radius: 0px 0px 6px 6px;
-  -webkit-box-shadow: 0px 1px 6px 0px black;
-          box-shadow: 0px 1px 6px 0px black;
+  box-shadow: 0px 1px 6px 0px black;
 }
-
 .container .background-image .todo .todo-content .todo-manage {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   width: 100%;
 }
-
 .container .background-image .todo .todo-content .todo-manage p {
   margin: auto;
   font-size: 15px;
   font-weight: 300;
   color: grey;
 }
-
 .container .background-image .todo .todo-content .todo-manage ul {
   padding: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
-
 .container .background-image .todo .todo-content .todo-manage ul li {
   list-style: none;
   margin: 0px 11px;
 }
-
 .container .background-image .todo .todo-content .todo-manage ul li a {
   text-decoration: none;
   font-size: 15px;
   font-weight: 300;
   color: grey;
 }
-
 .container .background-image .todo .todo-content .todo-manage a {
   color: inherit;
   text-decoration: none;
@@ -136,20 +101,15 @@ body {
   font-size: 15px;
   font-weight: 300;
 }
-
 .container .background-image .todo .todo-content .todo-manage a:hover {
   color: #3a7cfd;
 }
-
 .container .background-image .todo .todo-box {
   margin-bottom: -61px;
   border-radius: 6px 6px 0px 0px;
   position: relative;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .container .background-image .todo .todo-box .image-circle {
   width: 20px;
   border-radius: 50%;
@@ -159,21 +119,14 @@ body {
   margin: auto;
   left: 17px;
   overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
+  justify-content: center;
+  align-content: center;
 }
-
 .container .background-image .todo .todo-box .image-circle img {
   width: 12px;
   margin: auto;
 }
-
 .container .background-image .todo .todo-box p {
   -webkit-animation-name: zoom;
           animation-name: zoom;
@@ -185,7 +138,6 @@ body {
   width: 100%;
   padding-left: 35px;
 }
-
 .container .background-image .todo .todo-box .cross,
 .container .background-image .todo .todo-box .cross::after {
   background: #c8cbe7;
@@ -194,7 +146,6 @@ body {
   width: 21px;
   height: 2px;
 }
-
 .container .background-image .todo .todo-box .cross {
   -webkit-animation-name: zoom;
           animation-name: zoom;
@@ -204,14 +155,11 @@ body {
           animation-delay: 0s;
   display: none;
   top: 25px;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
   left: 88%;
 }
-
 .container .background-image .todo .todo-box .cross::after {
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }
 
 .image-circle2 {
@@ -236,7 +184,6 @@ footer {
     background-size: cover !important;
   }
 }
-
 @media (max-width: 610px) {
   .container .background-image {
     padding: 12px;
@@ -244,20 +191,20 @@ footer {
   .container .background-image .todo .heading img {
     left: 50%;
   }
+
   .todo-manage a {
     margin: auto !important;
   }
+
   .attribution {
     font-size: 14px !important;
   }
 }
-
 @media (max-width: 393px) {
   .container .background-image .todo .heading img {
     left: 40%;
   }
 }
-
 @-webkit-keyframes animate {
   0% {
     opacity: 0.5;
@@ -269,7 +216,6 @@ footer {
     opacity: 0.7;
   }
 }
-
 @keyframes animate {
   0% {
     opacity: 0.5;
@@ -281,103 +227,80 @@ footer {
     opacity: 0.7;
   }
 }
-
 @-webkit-keyframes slide {
   0% {
     opacity: 0;
-    -webkit-transform: translateX(2000px);
-            transform: translateX(2000px);
+    transform: translateX(2000px);
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    transform: translateX(0px);
   }
 }
-
 @keyframes slide {
   0% {
     opacity: 0;
-    -webkit-transform: translateX(2000px);
-            transform: translateX(2000px);
+    transform: translateX(2000px);
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    transform: translateX(0px);
   }
 }
-
 @-webkit-keyframes slide-left {
   0% {
     opacity: 0;
-    -webkit-transform: translateX(-2000px);
-            transform: translateX(-2000px);
+    transform: translateX(-2000px);
   }
   100% {
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    transform: translateX(0px);
   }
 }
-
 @keyframes slide-left {
   0% {
     opacity: 0;
-    -webkit-transform: translateX(-2000px);
-            transform: translateX(-2000px);
+    transform: translateX(-2000px);
   }
   100% {
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    transform: translateX(0px);
   }
 }
-
 @-webkit-keyframes slide-up {
   0% {
     opacity: 0;
-    -webkit-transform: translateY(2000px);
-            transform: translateY(2000px);
+    transform: translateY(2000px);
   }
   100% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    transform: translateY(0px);
   }
 }
-
 @keyframes slide-up {
   0% {
     opacity: 0;
-    -webkit-transform: translateY(2000px);
-            transform: translateY(2000px);
+    transform: translateY(2000px);
   }
   100% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    transform: translateY(0px);
   }
 }
-
 @-webkit-keyframes zoom {
   0% {
     opacity: 0;
-    -webkit-transform: scale(0.3);
-            transform: scale(0.3);
+    transform: scale(0.3);
   }
   100% {
     opacity: 1;
   }
 }
-
 @keyframes zoom {
   0% {
     opacity: 0;
-    -webkit-transform: scale(0.3);
-            transform: scale(0.3);
+    transform: scale(0.3);
   }
   100% {
     opacity: 1;
   }
 }
-
 .hidden {
   opacity: 0;
 }
@@ -385,4 +308,3 @@ footer {
 .hidden2 {
   display: block;
 }
-/*# sourceMappingURL=index.css.map */
