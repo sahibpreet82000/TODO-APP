@@ -128,7 +128,7 @@ const completedTasks = [];
 imageCircles.forEach((el, i) => {
   el.children[0].addEventListener("click", function (e) {
     // if (e.target.classList.contains('hidden')) {
-    // 	const text = el.parentElement.children[1].innerText;
+    // 	const text = el.parentElement.children[1].innerText;44
     // 	completedTasks.push(text);
     // 	localStorage.setItem('completed', JSON.stringify(completedTasks));
     // }
@@ -151,7 +151,7 @@ imageCircles.forEach((el, i) => {
     );
   });
 });
-
+3;
 //--------------------------------------------------for clear all --------------------------------------------------
 
 function clearAll() {
@@ -213,5 +213,9 @@ function complete() {
       console.log(el.children[0].parentElement.parentElement);
       el.children[0].parentElement.parentElement.classList.toggle("none");
     }
+  });
+  this.addEventListener("mouseleave", function () {
+    location.reload();
+    // console.log(this.children);
   });
 }

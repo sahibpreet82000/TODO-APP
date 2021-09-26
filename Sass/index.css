@@ -263,6 +263,9 @@ footer {
   .container .background-image .todo .heading img {
     left: 50%;
   }
+  .container .background-image .todo .todo-box .cross {
+    display: block;
+  }
   .todo-manage a {
     margin: auto !important;
   }
@@ -274,6 +277,15 @@ footer {
 @media (max-width: 393px) {
   .container .background-image .todo .heading img {
     left: 40%;
+  }
+  .container .background-image .todo .todo-content .todo-manage p {
+    font-size: 13px;
+  }
+  .container .background-image .todo .todo-content .todo-manage ul li a {
+    font-size: 13px;
+  }
+  .container .background-image .todo .todo-content .todo-manage a {
+    font-size: 13px;
   }
 }
 
