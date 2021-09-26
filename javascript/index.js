@@ -35,8 +35,22 @@ function showNotes() {
   } else {
     noteElm.innerHTML = ``;
   }
+  // ---------------------------------------------------------for item quantity set--------------------------------------------------------------------
+
   let noteEl = document.querySelector(".todo-manage p");
+  let itemLength = document.querySelectorAll(".image-circle img");
   noteEl.innerHTML = notesObj.length + " item(s) left";
+
+  itemLength.forEach((el) => {
+    el.addEventListener("click", function (e) {
+      if (e.target.classList.contains("hidden2")) {
+        noteEl.innerHTML = ++notesObj.length + " item(s) left";
+      } else {
+        noteEl.innerHTML = --notesObj.length + " item(s) left";
+      }
+    });
+  });
+
   hover();
 }
 //--------------------------------------------------for deletion a note--------------------------------------------------
@@ -205,17 +219,21 @@ function active() {
 }
 //--------------------------------------------------for complete task--------------------------------------------------
 
-function complete() {
-  let imageCircles = document.querySelectorAll(".image-circle");
+// function complete() {
+//   let imageCircles = document.querySelectorAll(".image-circle");
 
-  imageCircles.forEach((el) => {
-    if (el.children[0].classList.contains("hidden")) {
-      console.log(el.children[0].parentElement.parentElement);
-      el.children[0].parentElement.parentElement.classList.toggle("none");
-    }
-  });
-  this.addEventListener("mouseleave", function () {
-    location.reload();
-    // console.log(this.children);
-  });
-}
+//   imageCircles.forEach((el) => {
+//     if (el.children[0].classList.contains("hidden")) {
+//       console.log(el.children[0].parentElement.parentElement);
+//       el.children[0].parentElement.parentElement.classList.toggle("none");
+//     }
+//     else{
+//       // location.reload();
+//       el.children[0].parentElement.parentElement.style.display="flex";
+//     }
+//   });
+//   // this.addEventListener("mouseleave", function () {
+//   //   location.reload();
+//   //   // console.log(this.children);
+//   // });
+// }
