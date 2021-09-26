@@ -69,7 +69,7 @@
               <ul>
                 <li><a href="#" onclick="active()">All</a></li>
                 <li><a href="#" onclick="active()">Active</a></li>
-                <li><a href="#" onclick="complete(this.id)" >Complete</a></li>
+                <li><a href="#" onclick="complete(this.id)">Complete</a></li>
               </ul>
               <a href="#" onclick="clearAll()">Clear Complete</a>
             </div>
@@ -88,22 +88,22 @@
     </footer>
     <script src="/javascript/index.js"></script>
     <script>
-     let enter = document.getElementById("press");
-enter.addEventListener("keypress", function (event) {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    let notes = localStorage.getItem("notes");
-    if (notes == null) {
-      notesObj = [];
-    } else {
-      notesObj = JSON.parse(notes);
-    }
-    notesObj.push(enter.value);
-    localStorage.setItem("notes", JSON.stringify(notesObj));
-    enter.value = "";
-    showNotes();
-  }
-});
+      let enter = document.getElementById("press");
+      enter.addEventListener("keypress", function (event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          let notes = localStorage.getItem("notes");
+          if (notes == null) {
+            notesObj = [];
+          } else {
+            notesObj = JSON.parse(notes);
+          }
+          notesObj.push(enter.value);
+          localStorage.setItem("notes", JSON.stringify(notesObj));
+          enter.value = "";
+          showNotes();
+        }
+      });
     </script>
   </body>
 </html>
