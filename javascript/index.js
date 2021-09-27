@@ -20,7 +20,7 @@ function showNotes() {
   notesObj.forEach(function (element, index) {
     html += `
 	   <div class="todo-box">
-	   <div class="image-circle">
+	   <div class="image-circle" id="${index}" onclick="completing(this.id)">
 	     <img src="./images/icon-check.svg" alt="img" class="hidden"/>
 	   </div>
 	   <p>${element}</p>
@@ -52,6 +52,8 @@ function showNotes() {
   });
 
   hover();
+  select();
+  boxChange();
 }
 //--------------------------------------------------for deletion a note--------------------------------------------------
 
@@ -66,11 +68,23 @@ function deleting(index) {
   localStorage.setItem("notes", JSON.stringify(notesObj));
   showNotes();
 }
+// --------------------------------------------------for Completed task--------------------------------------------------
+// function completing(index) {
+//   let notes = localStorage.getItem("notes");
+//   if (notes == null && e.target.classList.contains("hidden")) {
+//     notesObj = [];
+//   } else {
+//     notesObj = JSON.parse(notes);
+//   }
+//   // // notesObj.splice(index, 1);
+//   // notesObj.("hidden");
+//   localStorage.setItem("notes", JSON.stringify(notesObj));
+//   showNotes();
+// }
+
 // --------------------------------------------------for background and text change (switching light to dark)--------------------------------------------------
 
 function change() {
-  // --------------------------------------------------for background and text change switching light --------------------------------------------------
-
   let set = document.querySelector(".img-light");
   let background = document.querySelector(".background-image");
   let body = document.getElementsByTagName("body")[0];
@@ -81,6 +95,7 @@ function change() {
   let text2 = document.querySelectorAll(".todo-box p");
   let tickBg = document.querySelectorAll(".image-circle img");
   let lineThrough = document.querySelectorAll(".line-through");
+  // --------------------------------------------------for background and text change switching light --------------------------------------------------
 
   if (set.style.zIndex != -2) {
     set.style.zIndex = "-2";
@@ -134,38 +149,50 @@ function change() {
     });
   }
 }
+// --------------------------------------------------for background and text change (switching light to dark)--------------------------------------------------
+function boxChange() {
+  let box2 = document.querySelectorAll(".todo-box");
+  let dark = document.querySelector(".img-dark");
+  if (dark.style.zIndex != 2) {
+    box2.forEach((el) => {
+      el.style.background = "#25273d";
+    });
+  } else {
+    box2.forEach((el) => {
+      el.style.background = "white";
+    });
+  }
+}
 //--------------------------------------------------for tick selection--------------------------------------------------
 
-const imageCircles = document.querySelectorAll(".image-circle");
-const completedTasks = [];
+function select() {
+  const imageCircles = document.querySelectorAll(".image-circle");
+  const completedTasks = [];
+  imageCircles.forEach((el, i) => {
+    el.children[0].addEventListener("click", function (e) {
+      if (e.target.classList.contains("hidden")) {
+        const text = el.parentElement.children[1].innerText;
+        completedTasks.push(text);
+        localStorage.setItem("completed", JSON.stringify(completedTasks));
+      }
 
-imageCircles.forEach((el, i) => {
-  el.children[0].addEventListener("click", function (e) {
-    // if (e.target.classList.contains('hidden')) {
-    // 	const text = el.parentElement.children[1].innerText;44
-    // 	completedTasks.push(text);
-    // 	localStorage.setItem('completed', JSON.stringify(completedTasks));
-    // }
-
-    e.target.classList.toggle("hidden");
+      e.target.classList.toggle("hidden");
+    });
   });
-});
-imageCircles.forEach((el, i) => {
-  el.children[0].addEventListener("click", function (e) {
-    e.target.classList.toggle("hidden2");
+  imageCircles.forEach((el, i) => {
+    el.children[0].addEventListener("click", function (e) {
+      e.target.classList.toggle("hidden2");
+    });
   });
-});
-//--------------------------------------------------for paragraph toggle after tick selection--------------------------------------------------
-
-imageCircles.forEach((el, i) => {
-  el.children[0].addEventListener("click", function (e) {
-    // console.log(e.target.parentElement.parentElement.children[1]);
-    e.target.parentElement.parentElement.children[1].classList.toggle(
-      "line-through"
-    );
+  //--------------------------------------------------for paragraph toggle after tick selection--------------------------------------------------
+  imageCircles.forEach((el, i) => {
+    el.children[0].addEventListener("click", function (e) {
+      e.target.parentElement.parentElement.children[1].classList.toggle(
+        "line-through"
+      );
+    });
   });
-});
-3;
+}
 //--------------------------------------------------for clear all --------------------------------------------------
 
 function clearAll() {
@@ -219,21 +246,36 @@ function active() {
 }
 //--------------------------------------------------for complete task--------------------------------------------------
 
-// function complete() {
+// function completing() {
 //   let imageCircles = document.querySelectorAll(".image-circle");
+//   let completedTasks = localStorage.getItem("completed");
+//   completedTasks = JSON.parse(completedTasks);
+//   console.log(completedTasks);
+//   let notes = localStorage.getItem("notes");
 
-//   imageCircles.forEach((el) => {
-//     if (el.children[0].classList.contains("hidden")) {
-//       console.log(el.children[0].parentElement.parentElement);
-//       el.children[0].parentElement.parentElement.classList.toggle("none");
-//     }
-//     else{
-//       // location.reload();
-//       el.children[0].parentElement.parentElement.style.display="flex";
-//     }
-//   });
+//   if (completedTasks) {
+//     document.querySelector(".todo-box").innerHTML =
+//       `
+//     <p>${completedTasks}</p>
+//   `;
+
+//   localStorage.setItem("completed", JSON.stringify(completedTasks));
+//   }
+
+//-------------------------------------------------------------------------------------------
+//   // imageCircles.forEach((el) => {
+//   //   if (el.children[0].classList.contains("hidden")) {
+//   //     console.log(el.children[0].parentElement.parentElement);
+//   //     el.children[0].parentElement.parentElement.classList.toggle("none");
+//   //   }
+//   //   else{
+//   //     // location.reload();
+//   //     el.children[0].parentElement.parentElement.style.display="flex";
+//   //   }
+//   // });
 //   // this.addEventListener("mouseleave", function () {
 //   //   location.reload();
 //   //   // console.log(this.children);
 //   // });
 // }
+// completing();
