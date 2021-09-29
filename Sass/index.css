@@ -182,7 +182,6 @@ body {
           animation-duration: 1s;
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
-  color: #c8cbe7;
   width: 100%;
   padding-left: 35px;
 }
@@ -215,18 +214,29 @@ body {
           transform: rotate(-90deg);
 }
 
+.container .background-image .todo .instructions {
+  margin: auto;
+  margin-top: 120px;
+}
+
+.container .background-image .todo .instructions p {
+  text-align: center;
+  color: #777a92;
+  font-size: 18px;
+}
+
+.container .background-image .todo .instructions #instructions {
+  margin: 0px;
+}
+
 #todo-set {
   border-radius: 6px;
   -webkit-box-shadow: 0px 0px 7px 0px black;
           box-shadow: 0px 0px 7px 0px black;
 }
 
-.image-circle2 {
-  background: linear-gradient(45deg, #de06bc, transparent);
-}
-
 .line-through {
-  color: #4d5067 !important;
+  color: #4d5067;
   text-decoration: line-through;
 }
 
@@ -247,6 +257,15 @@ footer {
   left: 0;
   right: 0;
   width: 100%;
+}
+
+textarea {
+  background: transparent;
+  margin: 0px;
+  width: 255px;
+  height: 26px;
+  color: white;
+  outline: none;
 }
 
 @media (max-width: 1020px) {

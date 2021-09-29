@@ -6,6 +6,11 @@ showNotes();
 3) logic to add completed task to local storage
 */
 
+/* TO DO
+1. double on a note to edit it and save it in the location of same previous local storage value.
+2. see code from 92 to 123.
+*/
+
 //--------------------------------------------------for adding a note--------------------------------------------------
 
 function showNotes() {
@@ -16,11 +21,11 @@ function showNotes() {
     notesObj = JSON.parse(notes);
   }
   let html = "";
-
+  // notesObj.reverse();
   notesObj.forEach(function (element, index) {
     html += `
 	   <div class="todo-box">
-	   <div class="image-circle" id="${index}" onclick="completing(this.id)">
+	   <div class="image-circle">
 	     <img src="./images/icon-check.svg" alt="img" class="hidden"/>
 	   </div>
 	   <p>${element}</p>
@@ -54,6 +59,7 @@ function showNotes() {
   hover();
   select();
   boxChange();
+  editNotes();
 }
 //--------------------------------------------------for deletion a note--------------------------------------------------
 
@@ -65,10 +71,12 @@ function deleting(index) {
     notesObj = JSON.parse(notes);
   }
   notesObj.splice(index, 1);
+
   localStorage.setItem("notes", JSON.stringify(notesObj));
   showNotes();
 }
-// --------------------------------------------------for Completed task--------------------------------------------------
+// --------------------------------------------------for Completing task--------------------------------------------------
+
 // function completing(index) {
 //   let notes = localStorage.getItem("notes");
 //   if (notes == null && e.target.classList.contains("hidden")) {
@@ -81,7 +89,37 @@ function deleting(index) {
 //   localStorage.setItem("notes", JSON.stringify(notesObj));
 //   showNotes();
 // }
-
+// --------------------------------------------------for Changing the text--------------------------------------------------
+function editNotes() {
+  let changeText = document.querySelectorAll(".todo-box");
+  changeText.forEach((el) => {
+    console.log(el.children[1].innerHTML);
+    el.children[1].addEventListener("dblclick", function (e) {
+      console.log(typeof e.target.innerHTML);
+      let noText = e.target.innerHTML;
+      if (noText) {
+        let html = e.target.innerHTML;
+        e.target.innerHTML = `<textarea id ="textarea">${html} </textarea>`;
+      }
+      let textarea = document.querySelectorAll("#textarea");
+      textarea.forEach((el) => {
+        el.addEventListener("blur", function (e) {
+          e.target.parentElement.innerHTML= el.value;
+          // let notes = localStorage.getItem("notes");
+          // if (notes == null) {
+          //   notesObj = [];
+          // } else {
+          //   notesObj = JSON.parse(notes);
+          // }
+          // notesObj.push(el.value);
+          // console.log(el.value);
+          // console.log(e.target.parentElement.innerHTML);
+        });
+        // localStorage.setItem("notes", JSON.stringify(notesObj));
+      });
+    });
+  });
+}
 // --------------------------------------------------for background and text change (switching light to dark)--------------------------------------------------
 
 function change() {
@@ -93,8 +131,7 @@ function change() {
   let box3 = document.querySelector(".todo-content");
   let text = document.querySelector(".task-text");
   let text2 = document.querySelectorAll(".todo-box p");
-  let tickBg = document.querySelectorAll(".image-circle img");
-  let lineThrough = document.querySelectorAll(".line-through");
+  let tickBg = document.querySelectorAll(".hidden2");
   // --------------------------------------------------for background and text change switching light --------------------------------------------------
 
   if (set.style.zIndex != -2) {
@@ -117,7 +154,6 @@ function change() {
     box.style.background = "#25273d";
     box3.style.background = "#25273d";
     text.style.color = "rgb(200, 203, 231)";
-
     tickBg.forEach((el) => {
       el.style.background = "linear-gradient(45deg, #de06bc, transparent)";
     });
@@ -133,9 +169,6 @@ function change() {
     text2.forEach((el) => {
       el.style.color = "grey";
     });
-    lineThrough.forEach((el) => {
-      el.style.color = "grey";
-    });
   } else {
     dark.style.zIndex = "-2";
     box2.forEach((el) => {
@@ -144,25 +177,37 @@ function change() {
     text2.forEach((el) => {
       el.style.color = "#c8cbe7";
     });
-    lineThrough.forEach((el) => {
-      el.style.color = "#4d5067";
-    });
   }
 }
 // --------------------------------------------------for background and text change (switching light to dark)--------------------------------------------------
 function boxChange() {
   let box2 = document.querySelectorAll(".todo-box");
+  let lineThrough = document.querySelectorAll(".line-through");
   let dark = document.querySelector(".img-dark");
+  let text2 = document.querySelectorAll(".todo-box p");
   if (dark.style.zIndex != 2) {
     box2.forEach((el) => {
       el.style.background = "#25273d";
+    });
+    text2.forEach((el) => {
+      el.style.color = "#c8cbe7";
+    });
+    lineThrough.forEach((el) => {
+      el.style.color = "black";
     });
   } else {
     box2.forEach((el) => {
       el.style.background = "white";
     });
+    text2.forEach((el) => {
+      el.style.color = "grey";
+    });
+    lineThrough.forEach((el) => {
+      el.style.color = "#4d5067";
+    });
   }
 }
+
 //--------------------------------------------------for tick selection--------------------------------------------------
 
 function select() {
@@ -171,11 +216,11 @@ function select() {
   imageCircles.forEach((el, i) => {
     el.children[0].addEventListener("click", function (e) {
       if (e.target.classList.contains("hidden")) {
-        const text = el.parentElement.children[1].innerText;
-        completedTasks.push(text);
-        localStorage.setItem("completed", JSON.stringify(completedTasks));
+        // const text = el.parentElement.children[1].innerText;
+        // completedTasks.push(text);
+        // localStorage.setItem("completed", JSON.stringify(completedTasks));
       }
-
+      console.log(e.target);
       e.target.classList.toggle("hidden");
     });
   });
@@ -187,6 +232,7 @@ function select() {
   //--------------------------------------------------for paragraph toggle after tick selection--------------------------------------------------
   imageCircles.forEach((el, i) => {
     el.children[0].addEventListener("click", function (e) {
+      // console.log(e.target.parentElement.parentElement.children);
       e.target.parentElement.parentElement.children[1].classList.toggle(
         "line-through"
       );
@@ -247,35 +293,34 @@ function active() {
 //--------------------------------------------------for complete task--------------------------------------------------
 
 // function completing() {
-//   let imageCircles = document.querySelectorAll(".image-circle");
-//   let completedTasks = localStorage.getItem("completed");
-//   completedTasks = JSON.parse(completedTasks);
-//   console.log(completedTasks);
-//   let notes = localStorage.getItem("notes");
+// let imageCircles = document.querySelectorAll(".image-circle");
+// let completedTasks = localStorage.getItem("completed");
+// completedTasks = JSON.parse(completedTasks);
+// console.log(completedTasks);
+// let notes = localStorage.getItem("notes");
 
-//   if (completedTasks) {
-//     document.querySelector(".todo-box").innerHTML =
-//       `
-//     <p>${completedTasks}</p>
-//   `;
+// if (completedTasks) {
+//   document.querySelector(".todo-box").innerHTML =
+//     `
+//   <p>${completedTasks}</p>
+// `;
 
-//   localStorage.setItem("completed", JSON.stringify(completedTasks));
-//   }
+// localStorage.setItem("completed", JSON.stringify(completedTasks));
+// }
 
 //-------------------------------------------------------------------------------------------
-//   // imageCircles.forEach((el) => {
-//   //   if (el.children[0].classList.contains("hidden")) {
-//   //     console.log(el.children[0].parentElement.parentElement);
-//   //     el.children[0].parentElement.parentElement.classList.toggle("none");
-//   //   }
-//   //   else{
-//   //     // location.reload();
-//   //     el.children[0].parentElement.parentElement.style.display="flex";
-//   //   }
-//   // });
-//   // this.addEventListener("mouseleave", function () {
-//   //   location.reload();
-//   //   // console.log(this.children);
-//   // });
+// imageCircles.forEach((el) => {
+//   if (el.children[0].classList.contains("hidden")) {
+//     console.log(el.children[0].parentElement.parentElement);
+//     el.children[0].parentElement.parentElement.classList.toggle("none");
+//   }
+//   else{
+//     // location.reload();
+//     el.children[0].parentElement.parentElement.style.display="flex";
+//   }
+// });
+// this.addEventListener("mouseleave", function () {
+//   location.reload();
+//   // console.log(this.children);
+// });
 // }
-// completing();
