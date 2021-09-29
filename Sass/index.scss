@@ -198,7 +198,7 @@ body {
   box-shadow: 0px 0px 7px 0px black;
 }
 .line-through {
-  color: #4d5067;
+  color: #4d5067 !important;
   text-decoration: line-through;
 }
 .hidden {
@@ -248,7 +248,7 @@ textarea{
         }
         & .todo-box {
           .cross {
-            display: block;
+            display: block !important;
           }
         }
       }

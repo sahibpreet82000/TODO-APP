@@ -105,27 +105,14 @@ function editNotes() {
 			textarea.forEach(el => {
 				el.addEventListener('blur', function (e) {
 					const updatedNotes = [];
-
 					e.target.parentElement.innerHTML = el.value;
-
 					const allTaskPara = document.querySelectorAll('.todo-box p');
 					allTaskPara.forEach(task => {
 						updatedNotes.push(task.textContent);
 					});
 
 					localStorage.setItem('notes', JSON.stringify(updatedNotes));
-
-					// let notes = localStorage.getItem("notes");
-					// if (notes == null) {
-					//   notesObj = [];
-					// } else {
-					//   notesObj = JSON.parse(notes);
-					// }
-					// notesObj.push(el.value);
-					// console.log(el.value);
-					// console.log(e.target.parentElement.innerHTML);
 				});
-				// localStorage.setItem("notes", JSON.stringify(notesObj));
 			});
 		});
 	});
@@ -135,6 +122,7 @@ function editNotes() {
 function change() {
 	let set = document.querySelector('.img-light');
 	let background = document.querySelector('.background-image');
+	let footer= document.querySelector('.attribution');
 	let body = document.getElementsByTagName('body')[0];
 	let box = document.querySelector('.taskpane');
 	let box2 = document.querySelectorAll('.todo-box');
@@ -151,6 +139,7 @@ function change() {
 		body.style.background = 'white';
 		box.style.background = 'white';
 		box3.style.background = 'white';
+		footer.style.color = 'black';
 		text.style.color = 'black';
 		tickBg.forEach(el => {
 			el.style.background =
@@ -163,6 +152,7 @@ function change() {
 		body.style.background = '#171823';
 		box.style.background = '#25273d';
 		box3.style.background = '#25273d';
+    footer.style.color = 'white';
 		text.style.color = 'rgb(200, 203, 231)';
 		tickBg.forEach(el => {
 			el.style.background = 'linear-gradient(45deg, #de06bc, transparent)';

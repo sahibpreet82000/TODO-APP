@@ -236,7 +236,7 @@ body {
 }
 
 .line-through {
-  color: #4d5067;
+  color: #4d5067 !important;
   text-decoration: line-through;
 }
 
@@ -283,7 +283,7 @@ textarea {
     left: 50%;
   }
   .container .background-image .todo .todo-box .cross {
-    display: block;
+    display: block !important;
   }
   .todo-manage a {
     margin: auto !important;
