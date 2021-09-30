@@ -97,7 +97,6 @@ function editNotes() {
 			let noText = e.target.innerHTML;
 			if (noText) {
 				let html = e.target.innerHTML;
-				console.log(html);
 				e.target.innerHTML = `<textarea id ="textarea">${html}</textarea>`;
 			}
 
