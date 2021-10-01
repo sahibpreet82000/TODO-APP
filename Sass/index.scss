@@ -180,13 +180,14 @@ body {
       & .instructions {
         margin: auto;
         margin-top: 120px;
+        margin-bottom: 120px;
 
         & p {
           text-align: center;
           color: #777a92;
           font-size: 18px;
         }
-        & #instructions{
+        & #instructions {
           margin: 0px;
         }
       }
@@ -217,7 +218,7 @@ footer {
   right: 0;
   width: 100%;
 }
-textarea{
+textarea {
   background: transparent;
   margin: 0px;
   width: 255px;
