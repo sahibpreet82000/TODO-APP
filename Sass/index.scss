@@ -132,21 +132,24 @@ body {
         align-items: center;
         //    box-shadow: 4px 4px rgb(white / 25%);
         & .image-circle {
-          width: 20px;
-          border-radius: 50%;
-          border: 1px solid grey;
-          height: 19px;
-          position: relative;
-          margin: auto;
-          left: 16px;
-          overflow: hidden;
-          display: flex;
-          justify-content: center;
-          align-content: center;
-          & img {
-            width: 12px;
-            margin: auto;
-            padding: 5px;
+
+          & input {
+            position: relative;
+            display: flex;
+            -webkit-appearance: none;
+            border: 1px solid #777a92;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            cursor: pointer;
+            left: 16px;
+          }
+          & input:checked {
+            background: url(/images/icon-check.svg),linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+            background-repeat: no-repeat;
+            background-position: center;
+            border: none;
           }
         }
 
@@ -202,6 +205,7 @@ body {
   color: #4d5067 !important;
   text-decoration: line-through;
 }
+
 .hidden {
   opacity: 0;
 }
