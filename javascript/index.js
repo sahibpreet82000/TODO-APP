@@ -276,21 +276,9 @@ function active() {
 }
 //--------------------------------------------------for complete task--------------------------------------------------
 
-// function completing() {
-// let imageCircles = document.querySelectorAll(".image-circle");
-// let completedTasks = localStorage.getItem("completed");
-// completedTasks = JSON.parse(completedTasks);
-// console.log(completedTasks);
-// let notes = localStorage.getItem("notes");
+function complete(){
 
-// if (completedTasks) {
-//   document.querySelector(".todo-box").innerHTML =
-//     `
-//   <p>${completedTasks}</p>
-// `;
-
-// localStorage.setItem("completed", JSON.stringify(completedTasks));
-// }
+}
 
 //-------------------------------------------------------------------------------------------
 // imageCircles.forEach((el) => {
