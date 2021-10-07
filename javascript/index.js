@@ -40,7 +40,7 @@ function showNotes() {
   } else {
     noteElm.innerHTML = ``;
   }
-    // ---------------------------------------------------------for item quantity set--------------------------------------------------------------------
+    // ---------------------------------------------for item quantity set------------------------------------------------
   let noteEl = document.querySelector(".todo-manage p");
   noteEl.innerHTML = notesObj.length + " item(s) left";
   let itemLength = document.querySelectorAll(".image-circle input");
@@ -75,20 +75,6 @@ function deleting(index) {
   localStorage.setItem("notes", JSON.stringify(notesObj));
   showNotes();
 }
-// --------------------------------------------------for Completing task--------------------------------------------------
-
-// function completing(index) {
-//   let notes = localStorage.getItem("notes");
-//   if (notes == null && e.target.classList.contains("hidden")) {
-//     notesObj = [];
-//   } else {
-//     notesObj = JSON.parse(notes);
-//   }
-//   // // notesObj.splice(index, 1);
-//   // notesObj.("hidden");
-//   localStorage.setItem("notes", JSON.stringify(notesObj));
-//   showNotes();
-// }
 // --------------------------------------------------for Changing the text--------------------------------------------------
 function editNotes() {
   let changeText = document.querySelectorAll(".todo-box");
@@ -212,7 +198,6 @@ function boxChange() {
 
 function select() {
   const imageCircles = document.querySelectorAll(".image-circle");
-  //   //--------------------------------------------------for paragraph toggle after tick selection--------------------------------------------------
   imageCircles.forEach((el, i) => {
     el.children[0].addEventListener("click", function (e) {
       if (
