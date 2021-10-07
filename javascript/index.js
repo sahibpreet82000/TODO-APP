@@ -76,7 +76,6 @@ function editNotes() {
   let changeText = document.querySelectorAll(".todo-box");
   changeText.forEach((el) => {
     el.children[1].addEventListener("dblclick", function (e) {
-      console.log(typeof e.target.innerHTML);
       let noText = e.target.innerHTML;
       if (noText) {
         let html = e.target.innerHTML;
@@ -210,22 +209,25 @@ function select() {
     });
   });
 }
-//--------------------------------------------------for clear all --------------------------------------------------
+//--------------------------------------------------for clear completed --------------------------------------------------
+function removeItems(item) {
+  item.remove();
+}
 
 function clearAll() {
-  const imageCircles = document.querySelectorAll(".image-circle");
-  var arr = JSON.parse(localStorage.getItem("checked"));
-  // arr.splice("checked", "true");
+  const imageCircles = document.querySelectorAll(".image-circle input");
   //--------------------------------------------------for paragraph toggle after tick selection--------------------------------------------------
   imageCircles.forEach((el, i) => {
-    el.children[0].addEventListener("click", function (e) {
-      if (e.target.classList.contains("box")) {
-      }
-    });
-    localStorage.setItem("checked", JSON.stringify(arr));
+    if (el.checked) {
+      removeItems(el.parentElement.parentElement.parentElement);
+      const updatedNotes = [];
+      const allTaskPara = document.querySelectorAll(".todo-box p");
+      allTaskPara.forEach((task) => {
+        updatedNotes.push(task.textContent);
+      });
+      localStorage.setItem("notes", JSON.stringify(updatedNotes));
+    }
   });
-  localStorage.clear();
-  location.reload();
 }
 
 //--------------------------------------------------for corss hover--------------------------------------------------
