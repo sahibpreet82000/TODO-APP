@@ -110,7 +110,6 @@ function change() {
   let box3 = document.querySelector(".todo-content");
   let text = document.querySelector(".task-text");
   let text2 = document.querySelectorAll(".todo-box p");
-  let tickBg = document.querySelectorAll(".hidden2");
   // --------------------------------------------------for background and text change switching light --------------------------------------------------
 
   if (set.style.zIndex != -2) {
@@ -122,10 +121,6 @@ function change() {
     box3.style.background = "white";
     footer.style.color = "black";
     text.style.color = "black";
-    tickBg.forEach((el) => {
-      el.style.background =
-        "linear-gradient(to right, rgb(129 0 248), #f89999)";
-    });
   } else {
     set.style.zIndex = "2";
     background.style.background =
@@ -135,9 +130,6 @@ function change() {
     box3.style.background = "#25273d";
     footer.style.color = "white";
     text.style.color = "rgb(200, 203, 231)";
-    tickBg.forEach((el) => {
-      el.style.background = "linear-gradient(45deg, #de06bc, transparent)";
-    });
   }
   // --------------------------------------------------for background and text change (switching to dark)--------------------------------------------------
 
@@ -188,7 +180,6 @@ function boxChange() {
     });
   }
 }
-
 //--------------------------------------------------for tick selection--------------------------------------------------
 
 function select() {
@@ -216,7 +207,6 @@ function removeItems(item) {
 
 function clearAll() {
   const imageCircles = document.querySelectorAll(".image-circle input");
-  //--------------------------------------------------for paragraph toggle after tick selection--------------------------------------------------
   imageCircles.forEach((el, i) => {
     if (el.checked) {
       removeItems(el.parentElement.parentElement.parentElement);
@@ -276,9 +266,7 @@ function active() {
 }
 //--------------------------------------------------for complete task--------------------------------------------------
 
-function complete(){
-
-}
+function complete() {}
 
 //-------------------------------------------------------------------------------------------
 // imageCircles.forEach((el) => {
@@ -286,16 +274,6 @@ function complete(){
 //     console.log(el.children[0].parentElement.parentElement);
 //     el.children[0].parentElement.parentElement.classList.toggle("none");
 //   }
-//   else{
-//     // location.reload();
-//     el.children[0].parentElement.parentElement.style.display="flex";
-//   }
-// });
-// this.addEventListener("mouseleave", function () {
-//   location.reload();
-//   // console.log(this.children);
-// });
-// }
 //--------------------------------------------------for checking complete task--------------------------------------------------
 function checked() {
   jQuery(($) => {
@@ -310,3 +288,6 @@ function checked() {
     });
   });
 }
+//-----------------------------------------------for Drag & Drop---------------------------------------------------------
+let todo = document.getElementById("todo-set");
+Sortable.create(todo);
