@@ -1,17 +1,5 @@
 showNotes();
-
-/* TO DO
-1. double on a note to edit it and save it in the location of same previous local storage value.
-2. see code from 92 to 123.
-*/
-
-/* 
-	updated code from line 92 to 115 
-	you can also check changes with git diff command
- */
-
 //--------------------------------------------------for adding a note--------------------------------------------------
-
 function showNotes() {
   let notes = localStorage.getItem("notes");
   if (notes == null) {
@@ -40,29 +28,37 @@ function showNotes() {
   } else {
     noteElm.innerHTML = ``;
   }
-    // ---------------------------------------------for item quantity set------------------------------------------------
+  // ---------------------------------------------for item quantity set------------------------------------------------
   let noteEl = document.querySelector(".todo-manage p");
+
   noteEl.innerHTML = notesObj.length + " item(s) left";
   let itemLength = document.querySelectorAll(".image-circle input");
   let item = localStorage.getItem("item");
+  if (item == null) {
+    noteEl.innerHTML = notesObj.length + " item(s) left";
+  } else {
+    noteEl.innerHTML = JSON.parse(item);
+  }
+
   itemLength.forEach((el) => {
     el.addEventListener("click", function (e) {
-      if (e.target.parentElement.parentElement.parentElement.children[1].classList.contains("line-through")) {
-        noteEl.innerHTML = ++notesObj.length + " item(s) left";
-      } else {
+      if (e.target.checked) {
         noteEl.innerHTML = --notesObj.length + " item(s) left";
+      } else {
+        noteEl.innerHTML = ++notesObj.length + " item(s) left";
       }
+
       localStorage.setItem("item", JSON.stringify(noteEl.innerHTML));
     });
   });
-  document.querySelector(".todo-manage p").innerHTML = JSON.parse(item);
   hover();
   select();
   boxChange();
   editNotes();
   checked();
 }
-//--------------------------------------------------for deletion a note--------------------------------------------------
+//--------------------------------------------------for deleting a note--------------------------------------------------
+
 function deleting(index) {
   let notes = localStorage.getItem("notes");
   if (notes == null) {
