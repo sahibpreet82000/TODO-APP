@@ -1,5 +1,7 @@
 showNotes();
+
 //--------------------------------------------------for adding a note--------------------------------------------------
+
 function showNotes() {
   let notes = localStorage.getItem("notes");
   if (notes == null) {
@@ -28,7 +30,9 @@ function showNotes() {
   } else {
     noteElm.innerHTML = ``;
   }
+
   // ---------------------------------------------for item quantity set------------------------------------------------
+
   let noteEl = document.querySelector(".todo-manage p");
 
   noteEl.innerHTML = notesObj.length + " item(s) left";
@@ -57,6 +61,7 @@ function showNotes() {
   editNotes();
   checked();
 }
+
 //--------------------------------------------------for deleting a note--------------------------------------------------
 
 function deleting(index) {
@@ -71,7 +76,9 @@ function deleting(index) {
   localStorage.setItem("notes", JSON.stringify(notesObj));
   showNotes();
 }
+
 // --------------------------------------------------for Changing the text--------------------------------------------------
+
 function editNotes() {
   let changeText = document.querySelectorAll(".todo-box");
   changeText.forEach((el) => {
@@ -98,7 +105,8 @@ function editNotes() {
     });
   });
 }
-// --------------------------------------------------for background and text change (switching light to dark)--------------------------------------------------
+
+// --------------------------------------------------for background and text change (switching light to dark)-----------------------------------------
 
 function change() {
   let set = document.querySelector(".img-light");
@@ -110,6 +118,7 @@ function change() {
   let box3 = document.querySelector(".todo-content");
   let text = document.querySelector(".task-text");
   let text2 = document.querySelectorAll(".todo-box p");
+
   // --------------------------------------------------for background and text change switching light --------------------------------------------------
 
   if (set.style.zIndex != -2) {
@@ -131,6 +140,7 @@ function change() {
     footer.style.color = "white";
     text.style.color = "rgb(200, 203, 231)";
   }
+
   // --------------------------------------------------for background and text change (switching to dark)--------------------------------------------------
 
   let dark = document.querySelector(".img-dark");
@@ -152,7 +162,9 @@ function change() {
     });
   }
 }
-// --------------------------------------------------for background and text change (switching light to dark)--------------------------------------------------
+
+// --------------------------------------------------for background and text change (switching light to dark)------------------------------------------------
+
 function boxChange() {
   let box2 = document.querySelectorAll(".todo-box");
   let lineThrough = document.querySelectorAll(".line-through");
@@ -180,6 +192,7 @@ function boxChange() {
     });
   }
 }
+
 //--------------------------------------------------for tick selection--------------------------------------------------
 
 function select() {
@@ -200,7 +213,9 @@ function select() {
     });
   });
 }
+
 //--------------------------------------------------for clear completed --------------------------------------------------
+
 function removeItems(item) {
   item.remove();
 }
@@ -221,6 +236,7 @@ function clearAll() {
 }
 
 //--------------------------------------------------for corss hover--------------------------------------------------
+
 function hover() {
   let notes = localStorage.getItem("notes");
   if (notes == null) {
@@ -248,6 +264,7 @@ function hover() {
 }
 
 //--------------------------------------------------for active task--------------------------------------------------
+
 function active() {
   let notes = localStorage.getItem("notes");
   if (notes == null) {
@@ -264,6 +281,7 @@ function active() {
     }
   });
 }
+
 //--------------------------------------------------for complete task--------------------------------------------------
 
 function complete() {}
@@ -274,7 +292,9 @@ function complete() {}
 //     console.log(el.children[0].parentElement.parentElement);
 //     el.children[0].parentElement.parentElement.classList.toggle("none");
 //   }
+
 //--------------------------------------------------for checking complete task--------------------------------------------------
+
 function checked() {
   jQuery(($) => {
     var arr = JSON.parse(localStorage.getItem("checked")) || [];
@@ -288,6 +308,8 @@ function checked() {
     });
   });
 }
+
 //-----------------------------------------------for Drag & Drop---------------------------------------------------------
+
 let todo = document.getElementById("todo-set");
 Sortable.create(todo);
