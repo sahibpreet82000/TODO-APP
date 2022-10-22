@@ -286,12 +286,7 @@ function active() {
 
 function complete() {}
 
-//-------------------------------------------------------------------------------------------
-// imageCircles.forEach((el) => {
-//   if (el.children[0].classList.contains("hidden")) {
-//     console.log(el.children[0].parentElement.parentElement);
-//     el.children[0].parentElement.parentElement.classList.toggle("none");
-//   }
+
 
 //--------------------------------------------------for checking complete task--------------------------------------------------
 
@@ -313,3 +308,5 @@ function checked() {
 
 let todo = document.getElementById("todo-set");
 Sortable.create(todo);
+
+
