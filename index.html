@@ -1,94 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- displays site properly based on user's device -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/todo.jpg" />
+    <link rel="stylesheet" href="./Sass/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/todo.jpg" />
-  <link rel="stylesheet" href="./Sass/index.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+    <title>Todo app</title>
 
-  <title>Frontend Mentor | Todo app</title>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 20px;
+        text-align: center;
+      }
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution {
-      font-size: 20px;
-      text-align: center;
-    }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
 
-    .attribution a {
-      color: hsl(228, 45%, 44%);
-    }
-  </style>
-</head>
-
-<body>
-  <div class="container">
-    <div class="background-image">
-      <div class="todo">
-        <div class="heading">
-          <h1>T O D O</h1>
-          <img class="img-dark" onclick="change()" src="./images/icon-moon.svg" alt="" />
-          <img class="img-light" onclick="change()" src="./images/icon-sun.svg" alt="" />
-        </div>
-        <div class="taskpane">
-          <input type="text" class="task-text" placeholder="Create a TODO" id="press" />
-        </div>
-        <div id="todo-set"></div>
-        <div class="todo-content">
-          <div class="todo-manage">
-            <p></p>
-            <ul>
-              <li><a href="#" onclick="active()">All</a></li>
-              <li><a href="#" onclick="active()">Active</a></li>
-              <li><a href="#" onclick="complete()">Complete</a></li>
-            </ul>
-            <a href="#" onclick="clearAll()">Clear Complete</a>
+  <body>
+    <div class="container">
+      <div class="background-image">
+        <div class="todo">
+          <div class="heading">
+            <h1>T O D O</h1>
+            <img
+              class="img-dark"
+              onclick="change()"
+              src="./images/icon-moon.svg"
+              alt=""
+            />
+            <img
+              class="img-light"
+              onclick="change()"
+              src="./images/icon-sun.svg"
+              alt=""
+            />
           </div>
-        </div>
-        <div class="instructions">
-          <p>Drag and drop to reorder list</p>
-          <br />
-          <p id="instructions">Double click to edit a note</p>
+          <div class="taskpane">
+            <input
+              type="text"
+              class="task-text"
+              placeholder="Create a TODO"
+              id="press"
+            />
+          </div>
+          <div id="todo-set"></div>
+          <div class="todo-content">
+            <div class="todo-manage">
+              <p></p>
+              <ul>
+                <li><a href="#" onclick="active()">All</a></li>
+                <li><a href="#" onclick="active()">Active</a></li>
+                <li><a href="#" onclick="complete()">Complete</a></li>
+              </ul>
+              <a href="#" onclick="clearAll()">Clear Complete</a>
+            </div>
+          </div>
+          <div class="instructions">
+            <p>Drag and drop to reorder list</p>
+            <br />
+            <p id="instructions">Double click to edit a note</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <footer>
-    <div class="attribution">
-      Coded </> by <a href="#">Sahibpreet Singh</a>.
-    </div>
-  </footer>
-  <script src="/javascript/index.js"></script>
-  <script>
-    let enter = document.getElementById("press");
-    enter.addEventListener("keypress", function (event) {
-      if (event.keyCode === 13) {
-        event.preventDefault();
-        let notes = localStorage.getItem("notes");
-        if(event.target.value == ""){
-        alert("Enter a task");
-        return false;
-      }
-        if (notes == null) {
-          notesObj = [];
-        } else {
-          notesObj = JSON.parse(notes);
+    <footer>
+      <div class="attribution">Coded by <a href="#">Sahibpreet Singh</a>.</div>
+    </footer>
+    <script src="/javascript/index.js"></script>
+    <script>
+      let enter = document.getElementById("press");
+      enter.addEventListener("keypress", function (event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          let notes = localStorage.getItem("notes");
+          if (event.target.value == "") {
+            alert("Enter a task");
+            return false;
+          }
+          if (notes == null) {
+            notesObj = [];
+          } else {
+            notesObj = JSON.parse(notes);
+          }
+          notesObj.push(enter.value);
+          localStorage.setItem("notes", JSON.stringify(notesObj));
+          enter.value = "";
+          showNotes();
         }
-        notesObj.push(enter.value);
-        localStorage.setItem("notes", JSON.stringify(notesObj));
-        enter.value = "";
-        showNotes();
-      }
-    });
-  </script>
-</body>
-
+      });
+    </script>
+  </body>
 </html>
